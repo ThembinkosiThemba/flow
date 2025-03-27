@@ -170,7 +170,7 @@ export default function PomodoroModal({
           </button>
           <button
             onClick={() => setActiveSection("settings")}
-          className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all ${
+            className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all ${
               activeSection === "settings"
                 ? "text-primary border-b-2 border-primary"
                 : "text-muted-foreground hover:text-foreground"
@@ -227,7 +227,11 @@ export default function PomodoroModal({
                 size="lg"
                 onClick={toggleTimer}
                 className="w-24 transition-transform hover:scale-105 active:scale-95"
-                disabled={isActive && currentTask && currentTask.id !== task.id}
+                disabled={
+                  isActive && currentTask && currentTask.id !== task.id
+                    ? true
+                    : undefined
+                }
               >
                 {isActive && isCurrentTask ? (
                   <>
@@ -244,7 +248,11 @@ export default function PomodoroModal({
                 size="lg"
                 onClick={resetTimer}
                 className="w-24 transition-transform hover:scale-105 active:scale-95"
-                disabled={isActive && currentTask && currentTask.id !== task.id}
+                disabled={
+                  isActive && currentTask && currentTask.id !== task.id
+                    ? true
+                    : undefined
+                }
               >
                 <RotateCcw className="mr-2 h-4 w-4" /> Reset
               </Button>
